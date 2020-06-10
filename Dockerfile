@@ -6,4 +6,6 @@
 #CMD ["/usr/bin/java", "-jar", "-Dspring.profiles.active=default", "/app.war"]
 FROM tomcat:8.0-alpine
 ADD target/spring-boot-app-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/
+RUN rm /usr/local/tomcat/conf/tomcat-users.xml
+ADD tomcat-users.xml /usr/local/tomcat/conf/
 CMD ["catalina.sh", "run"]
